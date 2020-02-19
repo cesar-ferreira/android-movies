@@ -1,4 +1,4 @@
-package com.cesar.movies.ui
+package com.cesar.movies.ui.movies
 
 import androidx.lifecycle.ViewModel
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.cesar.movies.ui.MoviesFragment"
+        android:name="com.cesar.movies.ui.movies.MoviesFragment"
         android:label="movies_fragment"
         tools:layout="@layout/movies_fragment" />
 </navigation>
