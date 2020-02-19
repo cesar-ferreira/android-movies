@@ -1,7 +1,7 @@
 package com.cesar.movies.ui.movies.model
 
 class Movie (
-    var id: String?,
+    var id: Int?,
     var title: String?,
     var description: String?
 )
