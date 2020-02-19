@@ -9,5 +9,14 @@
         android:id="@+id/moviesFragment"
         android:name="com.cesar.movies.ui.movies.MoviesFragment"
         android:label="movies_fragment"
-        tools:layout="@layout/movies_fragment" />
+        tools:layout="@layout/movies_fragment" >
+        <action
+            android:id="@+id/action_moviesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.cesar.movies.ui.details.DetailsFragment"
+        android:label="details_fragment"
+        tools:layout="@layout/details_fragment" />
 </navigation>
