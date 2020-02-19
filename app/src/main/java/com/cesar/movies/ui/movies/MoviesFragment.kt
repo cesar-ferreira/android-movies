@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.cesar.movies.R
 import com.cesar.movies.ui.movies.adapter.MovieAdapter
 import com.cesar.movies.ui.movies.model.Movie
+import com.cesar.movies.utils.ClickListener
+import com.cesar.movies.utils.RecyclerTouchListener
 import kotlinx.android.synthetic.main.movies_fragment.view.*
 
 class MoviesFragment : Fragment() {
@@ -31,6 +35,7 @@ class MoviesFragment : Fragment() {
 
 
         setDataToRecyclerView()
+        click()
 
         return appView
     }
@@ -39,6 +44,7 @@ class MoviesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         // TODO: Use the ViewModel
+
     }
 
 
@@ -65,6 +71,28 @@ class MoviesFragment : Fragment() {
 
             mMovieList.add(movie)
         }
+
+    }
+
+    /**
+     * This method is responsible for performing the click action on the card.
+     */
+    private fun click() {
+
+        appView.recycler_view.addOnItemTouchListener(
+            RecyclerTouchListener.RecyclerTouchListener(
+                activity!!.applicationContext,
+                object : ClickListener {
+                    override fun onClick(position: Int) {
+
+                        val bundle = bundleOf("movie" to mMovieList[position].id)
+                        Navigation.findNavController(appView)
+                            .navigate(R.id.action_moviesFragment_to_detailsFragment, bundle)
+
+                    }
+
+                })
+        )
 
     }
 
